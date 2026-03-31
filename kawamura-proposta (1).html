@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Planejamento Estratégico — Kawamura Construções</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,300&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #00a851;
+    --green-dark: #02632b;
+    --navy: #0c1f0e;
+    --navy-2: #0f2b12;
+    --white: #ffffff;
+    --off-white: #f4f8f0;
+    --text-main: #1a2b1c;
+    --text-mid: #3d5940;
+    --text-light: #7a9c7e;
+    --border: rgba(0,168,81,0.18);
+    --gold: #c9a84c;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--text-main);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(12, 31, 14, 0.96);
+    backdrop-filter: blur(12px);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px;
+    height: 64px;
+    border-bottom: 1px solid rgba(0,168,81,0.2);
+  }
+  nav .logo-nav { height: 32px; filter: brightness(0) invert(1); }
+  nav ul { display: flex; gap: 32px; list-style: none; }
+  nav ul a {
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: color .2s;
+  }
+  nav ul a:hover { color: var(--green); }
+
+  /* HERO */
+  .hero { background: #0c1f0e !important;
+    min-height: 100vh;
+    background: var(--navy);
+    display: flex; flex-direction: column;
+    justify-content: flex-end;
+    padding: 120px 80px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 80% 30%, rgba(0,168,81,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 60% at 10% 80%, rgba(2,99,43,0.15) 0%, transparent 50%);
+  }
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(0,168,81,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,168,81,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 24px;
+    position: relative;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: inline-block; width: 32px; height: 1px;
+    background: var(--green);
+  }
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(48px, 6vw, 88px);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.0;
+    position: relative;
+    margin-bottom: 8px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--green);
+  }
+  .hero-sub {
+    font-size: 18px;
+    color: rgba(255,255,255,0.5);
+    font-weight: 300;
+    margin-top: 24px;
+    max-width: 560px;
+    line-height: 1.6;
+    position: relative;
+  }
+  .hero-meta {
+    display: flex; gap: 48px;
+    margin-top: 64px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(0,168,81,0.2);
+    position: relative;
+  }
+  .hero-meta-item label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    display: block; margin-bottom: 6px;
+  }
+  .hero-meta-item span {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--white);
+  }
+  .hero-logo-area {
+    position: absolute; top: 80px; right: 80px;
+  }
+  .hero-logo-area img { height: 48px; mix-blend-mode: screen; }
+  .hero-badge {
+    position: absolute; top: 80px; left: 80px;
+    background: rgba(0,168,81,0.1);
+    border: 1px solid rgba(0,168,81,0.3);
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--green);
+    letter-spacing: 0.1em;
+  }
+
+  /* SECTIONS */
+  section { padding: 100px 80px; }
+  section:not(.hero):nth-child(odd) { background: var(--white); }
+  section:not(.hero):nth-child(even) { background: var(--off-white); }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 16px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-label::before {
+    content: '';
+    display: inline-block; width: 24px; height: 1px;
+    background: var(--green);
+  }
+  .section-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(36px, 4vw, 56px);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--text-main);
+    margin-bottom: 48px;
+  }
+  .section-title em { font-style: italic; color: var(--green-dark); }
+
+  /* CARDS GRID */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-top: 48px;
+  }
+  .card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px;
+    transition: transform .2s, box-shadow .2s;
+  }
+  .card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,168,81,0.08); }
+  .card-icon {
+    width: 44px; height: 44px;
+    background: rgba(0,168,81,0.1);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  .card h3 {
+    font-size: 16px; font-weight: 600;
+    color: var(--text-main);
+    margin-bottom: 10px;
+  }
+  .card p { font-size: 14px; color: var(--text-mid); line-height: 1.65; }
+
+  /* HIGHLIGHT BOX */
+  .highlight {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 100%);
+    border-radius: 20px;
+    padding: 48px 56px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    margin: 48px 0;
+  }
+  .highlight::before {
+    content: '';
+    position: absolute; top: 0; left: 0;
+    width: 4px; height: 100%;
+    background: var(--green);
+  }
+  .highlight p {
+    font-size: 20px;
+    line-height: 1.7;
+    font-weight: 300;
+    position: relative;
+  }
+  .highlight strong { color: var(--green); font-weight: 600; }
+
+  /* TWO COL */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  .three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+
+  /* DATA TABLE */
+  .data-table { width: 100%; border-collapse: collapse; }
+  .data-table th {
+    background: var(--navy);
+    color: var(--white);
+    padding: 14px 20px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-align: left;
+  }
+  .data-table th:first-child { border-radius: 10px 0 0 0; }
+  .data-table th:last-child { border-radius: 0 10px 0 0; }
+  .data-table td {
+    padding: 14px 20px;
+    font-size: 14px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-mid);
+  }
+  .data-table td:first-child { font-weight: 600; color: var(--text-main); }
+  .data-table tr:nth-child(even) td { background: rgba(0,168,81,0.03); }
+  .data-table tr:last-child td { border-bottom: none; }
+
+  /* FUNNEL */
+  .funnel-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .funnel-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 28px 32px;
+    position: relative;
+  }
+  .funnel-step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 52px; bottom: -16px;
+    width: 2px; height: 32px;
+    background: linear-gradient(var(--green), transparent);
+    z-index: 1;
+  }
+  .funnel-num {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--navy);
+    color: var(--green);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    flex-shrink: 0;
+  }
+  .funnel-content h4 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+  .funnel-content p { font-size: 14px; color: var(--text-mid); line-height: 1.6; }
+  .funnel-tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-family: 'DM Mono', monospace;
+    margin-bottom: 8px;
+  }
+  .funnel-tag.meta { background: rgba(24,119,242,0.1); color: #1877f2; }
+  .funnel-tag.google { background: rgba(234,67,53,0.1); color: #ea4335; }
+  .funnel-tag.system { background: rgba(0,168,81,0.1); color: var(--green-dark); }
+  .funnel-tag.vendas { background: rgba(201,168,76,0.1); color: var(--gold); }
+
+  /* CRONOGRAMA */
+  .crono-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .crono-header {
+    padding: 16px 12px;
+    text-align: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    color: var(--white);
+  }
+  .crono-header.fase1 { background: var(--navy); }
+  .crono-header.fase2 { background: var(--green-dark); }
+  .crono-body {
+    padding: 16px 12px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.5;
+    border-top: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+    color: var(--text-mid);
+  }
+  .crono-body.fase1 { background: rgba(12,31,14,0.03); color: var(--navy); font-weight: 500; }
+  .crono-body.fase2 { background: rgba(2,99,43,0.06); color: var(--green-dark); font-weight: 500; }
+  .crono-span {
+    grid-column: span 3;
+    padding: 14px 20px;
+    font-size: 12px;
+    font-weight: 600;
+    border-top: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .crono-span.fase1 { background: rgba(12,31,14,0.04); color: var(--navy); }
+  .crono-span.fase2 { background: rgba(0,168,81,0.08); color: var(--green-dark); }
+  .crono-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .crono-dot.fase1 { background: var(--navy); }
+  .crono-dot.fase2 { background: var(--green); }
+
+  /* CENÁRIOS */
+  .cenario-grid {
+    display: grid;
+    grid-template-columns: 200px 1fr 1fr 1fr;
+    gap: 0;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .cen-header {
+    padding: 18px 20px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: var(--navy);
+    color: var(--white);
+    font-weight: 500;
+  }
+  .cen-col-header {
+    padding: 18px 20px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--white);
+  }
+  .cen-col-header.conservador { background: #2d4a30; }
+  .cen-col-header.realista { background: var(--green-dark); }
+  .cen-col-header.otimista { background: var(--green); color: var(--navy); }
+  .cen-label {
+    padding: 14px 20px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-main);
+    border-bottom: 1px solid var(--border);
+    background: rgba(12,31,14,0.02);
+  }
+  .cen-val {
+    padding: 14px 20px;
+    font-size: 13px;
+    text-align: center;
+    color: var(--text-mid);
+    border-bottom: 1px solid var(--border);
+    border-left: 1px solid var(--border);
+    font-family: 'DM Mono', monospace;
+  }
+  .cen-val.highlight-val { color: var(--green-dark); font-weight: 600; }
+
+  /* INVESTIMENTO */
+  .invest-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 48px;
+  }
+  .invest-card {
+    border-radius: 20px;
+    padding: 36px;
+    position: relative;
+    overflow: hidden;
+  }
+  .invest-card.main {
+    background: var(--navy);
+    color: white;
+    grid-column: span 2;
+  }
+  .invest-card.secondary {
+    background: var(--off-white);
+    border: 1px solid var(--border);
+  }
+  .invest-card .amount {
+    font-family: 'Fraunces', serif;
+    font-size: 48px;
+    font-weight: 900;
+    color: var(--green);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .invest-card .amount-label {
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 32px;
+  }
+  .invest-card.secondary .amount-label { color: var(--text-light); }
+  .invest-list { list-style: none; }
+  .invest-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    font-size: 14px;
+    color: rgba(255,255,255,0.7);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .invest-list li::before {
+    content: '✓';
+    color: var(--green);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .invest-card.secondary .invest-list li { color: var(--text-mid); border-color: var(--border); }
+
+  /* PAGAMENTO */
+  .pay-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 40px;
+  }
+  .pay-card {
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    text-align: center;
+    transition: all .2s;
+    cursor: default;
+  }
+  .pay-card:hover { border-color: var(--green); box-shadow: 0 8px 32px rgba(0,168,81,0.1); }
+  .pay-card.featured {
+    background: var(--navy);
+    border-color: transparent;
+    color: white;
+  }
+  .pay-method {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 12px;
+  }
+  .pay-amount {
+    font-family: 'Fraunces', serif;
+    font-size: 36px;
+    font-weight: 900;
+    color: var(--text-main);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .pay-card.featured .pay-amount { color: var(--white); }
+  .pay-period { font-size: 12px; color: var(--text-light); margin-bottom: 16px; }
+  .pay-card.featured .pay-period { color: rgba(255,255,255,0.5); }
+  .pay-note { font-size: 12px; color: var(--text-mid); line-height: 1.5; }
+  .pay-card.featured .pay-note { color: rgba(255,255,255,0.6); }
+  .pay-badge {
+    display: inline-block;
+    background: var(--green);
+    color: var(--navy);
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* STAT ROW */
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin: 48px 0;
+  }
+  .stat-box {
+    text-align: center;
+    padding: 32px 20px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: var(--white);
+  }
+  .stat-box .stat-num {
+    font-family: 'Fraunces', serif;
+    font-size: 48px;
+    font-weight: 900;
+    color: var(--green-dark);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .stat-box .stat-label {
+    font-size: 13px;
+    color: var(--text-mid);
+    line-height: 1.4;
+  }
+
+  /* PROXIMOS PASSOS */
+  .steps-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 40px;
+  }
+  .step-item {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    padding: 24px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: var(--white);
+    transition: all .2s;
+  }
+  .step-item:hover { border-color: var(--green); }
+  .step-who {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .step-who.beaba { background: rgba(0,168,81,0.1); color: var(--green-dark); }
+  .step-who.kawamura { background: rgba(12,31,14,0.08); color: var(--navy); }
+  .step-who.ambos { background: rgba(201,168,76,0.15); color: var(--gold); }
+  .step-text { font-size: 14px; color: var(--text-mid); line-height: 1.5; padding-top: 2px; }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy);
+    padding: 64px 80px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  footer .footer-logo img { height: 36px; mix-blend-mode: screen; }
+  footer .footer-contact { text-align: right; }
+  footer .footer-contact a {
+    display: block;
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 1.8;
+  }
+  footer .footer-contact a:hover { color: var(--green); }
+  footer .footer-copy {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.1em;
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    width: 100%;
+    text-align: center;
+  }
+
+  /* PILL TAG */
+  .pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    margin: 4px;
+  }
+  .pill.green { background: rgba(0,168,81,0.1); color: var(--green-dark); }
+  .pill.navy { background: rgba(12,31,14,0.08); color: var(--navy); }
+  .pill.gold { background: rgba(201,168,76,0.15); color: #a07a20; }
+
+  /* INSIGHT BOX */
+  .insight {
+    background: rgba(0,168,81,0.06);
+    border-left: 3px solid var(--green);
+    border-radius: 0 12px 12px 0;
+    padding: 20px 24px;
+    margin: 24px 0;
+  }
+  .insight-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 8px;
+  }
+  .insight p { font-size: 14px; color: var(--text-mid); line-height: 1.65; }
+  .insight strong { color: var(--text-main); }
+
+
+
+  .nav-burger {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: 22px;
+    cursor: pointer;
+    padding: 8px;
+    order: -1;
+  }
+  @media (max-width: 768px) {
+    nav { justify-content: space-between; }
+    .nav-burger { display: block; }
+    nav ul {
+      display: none;
+      position: fixed; top: 56px; left: 0; right: 0;
+      background: rgba(12,31,14,0.98);
+      backdrop-filter: blur(12px);
+      flex-direction: column;
+      padding: 20px 24px;
+      gap: 4px;
+      border-bottom: 1px solid rgba(0,168,81,0.2);
+      z-index: 99;
+    }
+    nav ul.open { display: flex; }
+    nav ul a { font-size: 15px; padding: 10px 0; display: block; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  }
+
+  /* INVEST SECTION — Calebito style */
+  #investimento-section { background: var(--navy) !important; }
+  #investimento-section h2 { color: var(--white) !important; }
+  #investimento-section .section-label { color: var(--green) !important; }
+  #investimento-section .section-label::before { background: var(--green) !important; }
+  .invest-grid-cal {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin: 3rem 0;
+  }
+  .invest-box-cal {
+    border: 1px solid rgba(255,255,255,0.07);
+    padding: 2.5rem;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.02);
+  }
+  .invest-box-label-cal {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.25);
+    display: block;
+    padding-bottom: 1.4rem;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 2rem;
+  }
+  .invest-total-cal {
+    font-family: 'Fraunces', serif;
+    font-size: 72px;
+    font-weight: 900;
+    color: var(--green);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.4rem;
+  }
+  .invest-total-cal sup {
+    font-size: 28px;
+    vertical-align: super;
+  }
+  .invest-total-sub-cal {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.22);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+  .pag-opts-cal { display: flex; flex-direction: column; gap: 1rem; }
+  .pag-opt-cal {
+    border: 1px solid rgba(255,255,255,0.06);
+    padding: 1.4rem 1.6rem;
+    border-radius: 6px;
+    background: rgba(255,255,255,0.02);
+    transition: border-color .2s;
+  }
+  .pag-opt-cal:hover { border-color: rgba(0,168,81,0.3); }
+  .pag-opt-label-cal {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--green);
+    display: block;
+    margin-bottom: 0.7rem;
+  }
+  .pag-opt-desc-cal {
+    font-size: 16px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.6;
+  }
+  .pag-opt-desc-cal small {
+    font-size: 12px;
+    opacity: 0.45;
+    font-weight: 500;
+    display: block;
+    margin-top: 4px;
+  }
+  .pag-nota-cal {
+    margin-top: 1.2rem;
+    padding: 1rem 1.4rem;
+    background: rgba(255,255,255,0.03);
+    border-left: 2px solid rgba(0,168,81,0.3);
+    border-radius: 0 6px 6px 0;
+  }
+  .pag-nota-cal p {
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.28);
+    margin: 0;
+    font-style: italic;
+    line-height: 1.6;
+  }
+  .incluso-box {
+    border: 1px solid rgba(255,255,255,0.07);
+    padding: 2rem 2.5rem;
+    border-radius: 10px;
+    background: rgba(0,168,81,0.05);
+    margin-bottom: 2rem;
+  }
+  .incluso-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--green);
+    display: block;
+    margin-bottom: 1rem;
+  }
+  .incluso-box p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.7;
+    margin: 0;
+  }
+  .incluso-box strong { color: rgba(255,255,255,0.85); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    nav ul { gap: 20px; }
+    nav ul a { font-size: 12px; }
+    section { padding: 80px 48px; }
+    .hero { padding: 100px 48px 64px; }
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; height: 56px; }
+    nav ul { display: none; }
+    nav .logo-nav { height: 28px; }
+
+    section { padding: 64px 20px; }
+    .hero { padding: 88px 20px 56px; }
+    .hero h1 { font-size: 40px; }
+    .hero-sub { font-size: 15px; }
+    .hero-meta { flex-direction: column; gap: 24px; padding-top: 28px; }
+    .hero-badge { position: static; margin-bottom: 16px; display: inline-block; }
+    .hero-logo-area { position: static; margin-bottom: 24px; }
+
+    .section-title { font-size: 32px; }
+
+    .two-col { grid-template-columns: 1fr; gap: 40px; }
+    .three-col { grid-template-columns: 1fr; gap: 24px; }
+    .cards-grid { grid-template-columns: 1fr; }
+    .stat-row { grid-template-columns: 1fr 1fr; gap: 16px; }
+    .stat-box .stat-num { font-size: 36px; }
+
+    .funnel-wrap { max-width: 100%; }
+    .funnel-step { padding: 20px 0; }
+
+    .crono-wrap { overflow-x: auto; }
+    .crono-grid { min-width: 600px; }
+
+    .cenario-wrap { overflow-x: auto; }
+    .cenario-grid { min-width: 640px; }
+
+    .invest-cards { grid-template-columns: 1fr; }
+    .invest-card.main { grid-column: span 1; }
+    .invest-card .amount { font-size: 40px; }
+
+    .invest-grid-cal { grid-template-columns: 1fr; }
+    .invest-total-cal { font-size: 52px; }
+
+    .pay-options { grid-template-columns: 1fr; }
+
+    .steps-list { grid-template-columns: 1fr; }
+
+    .perguntas { gap: 12px; }
+    .pergunta { padding: 20px; }
+    .pergunta p { font-size: 15px; }
+
+    footer { flex-direction: column; gap: 28px; padding: 48px 20px; text-align: center; }
+    footer .footer-contact { text-align: center; }
+    footer .footer-copy { font-size: 10px; }
+
+    .incluso-box { padding: 1.5rem; }
+    .data-table { font-size: 13px; }
+    .data-table th, .data-table td { padding: 10px 12px; }
+
+    .highlight { padding: 32px 28px; }
+    .highlight p { font-size: 17px; }
+  }
+
+  @media (max-width: 480px) {
+    .hero h1 { font-size: 32px; }
+    .section-title { font-size: 26px; }
+    .stat-row { grid-template-columns: 1fr; }
+    .stat-box .stat-num { font-size: 44px; }
+    .invest-total-cal { font-size: 44px; }
+  }
+
+</style>
+</head>
+<body>
+
+<nav>
+  <button class="nav-burger" onclick="document.querySelector('nav ul').classList.toggle('open')" aria-label="Menu">☰</button>
+  <img class="logo-nav" src="logo_nome_do_lado.png" alt="Bê-a-Bá Mídia">
+  <ul>
+    <li><a href="#diagnostico">Diagnóstico</a></li>
+    <li><a href="#estrategia">Estratégia</a></li>
+    <li><a href="#funil">Funil</a></li>
+    <li><a href="#cronograma">Cronograma</a></li>
+    <li><a href="#projecao">Projeção</a></li>
+    <li><a href="#alinhamento">Alinhamento</a></li>
+    <li><a href="#investimento-section">Investimento</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="topo">
+  <div class="hero-grid"></div>
+  <div class="hero-badge">CONFIDENCIAL — 31.03.2026</div>
+  <div class="hero-logo-area">
+    <img src="logo_nome_do_lado.png" alt="Bê-a-Bá Mídia">
+  </div>
+  <div class="hero-eyebrow">Planejamento Estratégico de Captação</div>
+  <h1>Kawamura<br><em>Construções</em></h1>
+  <p class="hero-sub">Projeto de 6 meses para geração de leads qualificados via Meta Ads + Google Ads — Fase 1: 10 casas de R$ 300k em Leme, SP.</p>
+  <div class="hero-meta">
+    <div class="hero-meta-item">
+      <label>Elaborado por</label>
+      <span>Carlos Furtado — Bê-a-Bá Mídia</span>
+    </div>
+    <div class="hero-meta-item">
+      <label>Apresentado para</label>
+      <span>Rafael Kawamura + Sócio Financeiro</span>
+    </div>
+    <div class="hero-meta-item">
+      <label>Data</label>
+      <span>31 de março de 2026</span>
+    </div>
+    <div class="hero-meta-item">
+      <label>Duração do projeto</label>
+      <span>6 meses</span>
+    </div>
+  </div>
+</section>
+
+<!-- DIAGNÓSTICO -->
+<section id="diagnostico">
+  <div class="section-label">01 — Diagnóstico</div>
+  <h2 class="section-title">O que mapeamos<br>antes de recomendar <em>qualquer coisa</em></h2>
+
+  <div class="two-col">
+    <div>
+      <table class="data-table" style="border-radius:12px;overflow:hidden;">
+        <thead><tr><th>Dado coletado</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>Especialidade</td><td>Médio e alto padrão (desde 2018/2019)</td></tr>
+          <tr><td>Produto Fase 1</td><td>10 casas de R$ 300k — Leme, SP</td></tr>
+          <tr><td>Time comercial</td><td>15 pessoas — 10 corretores, líder: Luciano Toledo</td></tr>
+          <tr><td>Atendimento</td><td>Em dupla (cliente costuma ser um casal)</td></tr>
+          <tr><td>Tempo de resposta</td><td>Até 5 minutos — benchmark excelente</td></tr>
+          <tr><td>CRM atual</td><td>HubSpot (vendas, sem automação)</td></tr>
+          <tr><td>Obras em andamento</td><td>80 obras — maioria em Leme (~50)</td></tr>
+          <tr><td>Tráfego pago atual</td><td>Parado desde janeiro/2026</td></tr>
+          <tr><td>Histórico de agências</td><td>3 experiências — todas insatisfatórias</td></tr>
+          <tr><td>Google Ads</td><td>Rafael testou por conta e veio cliente</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <h3 style="font-family:'Fraunces',serif;font-size:24px;font-weight:700;margin-bottom:24px;">O que já funciona</h3>
+      <div class="cards-grid" style="grid-template-columns:1fr;gap:16px;">
+        <div class="card" style="padding:20px 24px;">
+          <div style="font-size:13px;font-weight:600;margin-bottom:6px;">🎯 Time de vendas sólido</div>
+          <p style="font-size:13px;">15 pessoas treinadas para excelência no atendimento. Luciano Toledo lidera um time de 5 corretores — processo consultivo, nenhum lead desperdiçado.</p>
+        </div>
+        <div class="card" style="padding:20px 24px;">
+          <div style="font-size:13px;font-weight:600;margin-bottom:6px;">⚡ 5 minutos de resposta</div>
+          <p style="font-size:13px;">2 vendedores de plantão todos os dias monitorando leads. Estudos mostram 100x mais conversão vs. resposta após 20h.</p>
+        </div>
+        <div class="card" style="padding:20px 24px;">
+          <div style="font-size:13px;font-weight:600;margin-bottom:6px;">🏠 3 clientes/semana aparecem pessoalmente</div>
+          <p style="font-size:13px;">Demanda orgânica comprovada sem tráfego pago. Com funil estruturado, esse volume multiplica.</p>
+        </div>
+        <div class="card" style="padding:20px 24px;">
+          <div style="font-size:13px;font-weight:600;margin-bottom:6px;">✅ Google Ads já funcionou</div>
+          <p style="font-size:13px;">Rafael testou por conta própria, sem especialista — e veio cliente. Com gestão profissional, o canal tem potencial muito maior.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="highlight" style="margin-top:48px;">
+    <p>A Kawamura tem algo raro: <strong>o processo de vendas já funciona</strong>. Ligação preferida ao WhatsApp, atendimento em dupla porque o cliente é um casal, visita presencial quase sempre marcada — a máquina de conversão está pronta. <strong>O gargalo é volume de MQLs chegando até ela.</strong></p>
+  </div>
+
+  <h3 style="font-family:'Fraunces',serif;font-size:24px;font-weight:700;margin:48px 0 24px;">Taxa de conversão real — funil atual</h3>
+  <div class="stat-row">
+    <div class="stat-box"><div class="stat-num">10</div><div class="stat-label">leads entram no funil</div></div>
+    <div class="stat-box"><div class="stat-num">5</div><div class="stat-label">conversam com o corretor (2 descartados)</div></div>
+    <div class="stat-box"><div class="stat-num">3–4</div><div class="stat-label">visitam pessoalmente a construtora</div></div>
+    <div class="stat-box"><div class="stat-num" style="color:var(--green);">1</div><div class="stat-label">fechamento — processo validado</div></div>
+  </div>
+  <div class="insight">
+    <div class="insight-label">Insight crítico</div>
+    <p>Esse funil <strong>já valida o processo de vendas</strong>. O trabalho do tráfego pago é simples: aumentar o volume de leads qualificados que entram no topo — o fundo já funciona.</p>
+  </div>
+</section>
+
+<section id="estrategia">
+  <div class="section-label">02 — Estratégia</div>
+  <h2 class="section-title">Por que <em>essa sequência</em>,<br>nessa ordem</h2>
+
+  <div class="three-col">
+    <div class="card">
+      <div class="card-icon">🏡</div>
+      <h3>Por que as casas de R$ 300k primeiro?</h3>
+      <p>Ticket menor = menos objeções. CPL historicamente mais baixo. 10 unidades disponíveis = volume para validar. Ciclo de decisão mais curto — resultado aparece mais rápido.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📍</div>
+      <h3>Por que Leme primeiro?</h3>
+      <p>Foco geográfico concentrado = verba mais eficiente. Rafael foi explícito: "Prefiro só Leme. Se der resultado, abro para Pirassununga e Guarararas." Resultado validado antes de expandir.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🔁</div>
+      <h3>Por que um funil de cada vez?</h3>
+      <p>Três funis simultâneos geram ruído, não aprendizado. Cada produto tem persona e CPL diferentes. Misturar invalida os dados. Um funil validado é base para o próximo.</p>
+    </div>
+  </div>
+
+  <div style="margin-top:48px;">
+    <h3 style="font-family:'Fraunces',serif;font-size:24px;font-weight:700;margin-bottom:24px;">O papel de cada canal</h3>
+    <table class="data-table" style="border-radius:12px;overflow:hidden;">
+      <thead><tr><th>Canal</th><th>Lógica</th><th>Tipo de lead</th><th>Custo por lead estimado</th></tr></thead>
+      <tbody>
+        <tr><td>Meta Ads</td><td>Impacta quem tem perfil mas ainda não está buscando — cria demanda</td><td>Interesse / comportamento</td><td>R$ 60–120</td></tr>
+        <tr><td>Google Ads</td><td>Captura quem pesquisa "casa à venda Leme SP" — intenção declarada</td><td>Intenção de compra</td><td>R$ 80–150</td></tr>
+        <tr><td>Landing Page própria</td><td>Centraliza todos os leads num ponto único — controle total do funil</td><td>—</td><td>—</td></tr>
+      </tbody>
+    </table>
+    <div class="insight">
+      <div class="insight-label">Por que os dois canais se complementam</div>
+      <p>Meta alimenta o funil com volume. Google entrega intenção declarada. A Landing Page unifica e pré-qualifica. <strong>Rafael já testou Google sem especialista e veio cliente</strong> — com gestão profissional, a eficiência é muito maior.</p>
+    </div>
+  </div>
+</section>
+
+<section id="funil">
+  <div class="section-label">03 — Funil</div>
+  <h2 class="section-title">Da impressão do anúncio<br>ao <em>fechamento</em></h2>
+
+  <div class="two-col">
+    <div class="funnel-wrap">
+      <div class="funnel-step reveal">
+        <div class="funnel-num">01</div>
+        <div class="funnel-content">
+          <div><span class="funnel-tag meta">Meta Ads</span> <span class="funnel-tag google">Google Ads</span></div>
+          <h4>Anúncio com gatilho hiperlocal</h4>
+          <p>Criativo estático com endereço, bairro, cidade. Linguagem direta para quem está no momento de compra ou construção em Leme. Google captura busca ativa; Meta impacta o perfil certo.</p>
+        </div>
+      </div>
+      <div class="funnel-step reveal">
+        <div class="funnel-num">02</div>
+        <div class="funnel-content">
+          <div><span class="funnel-tag system">Landing Page</span></div>
+          <h4>Página de captura própria</h4>
+          <p>Todos os leads de todos os canais chegam em um ponto único de controle. Fotos do empreendimento, planta, localização, depoimentos — contexto completo antes do formulário.</p>
+        </div>
+      </div>
+      <div class="funnel-step reveal">
+        <div class="funnel-num">03</div>
+        <div class="funnel-content">
+          <div><span class="funnel-tag system">Formulário MQL</span></div>
+          <h4>Qualificação antes de chegar ao corretor</h4>
+          <p>Perguntas objetivas: renda familiar, prazo de compra, forma de pagamento prevista, cidade atual. Lead classificado automaticamente — só passa quem tem perfil real.</p>
+        </div>
+      </div>
+      <div class="funnel-step reveal">
+        <div class="funnel-num">04</div>
+        <div class="funnel-content">
+          <div><span class="funnel-tag system">Pré-qualificação automática</span></div>
+          <h4>Lead chega ao corretor já perfilado</h4>
+          <p>Alerta imediato com todos os dados coletados. O corretor liga sabendo: renda, prazo, intenção — conversa consultiva desde o primeiro contato, não uma ligação de triagem.</p>
+        </div>
+      </div>
+      <div class="funnel-step reveal">
+        <div class="funnel-num">05</div>
+        <div class="funnel-content">
+          <div><span class="funnel-tag vendas">Time Kawamura</span></div>
+          <h4>Ligação em até 5 minutos</h4>
+          <p>Processo já validado. Vendedor de plantão, atendimento em dupla, abordagem consultiva. Ligação converte muito mais reunião do que WhatsApp.</p>
+        </div>
+      </div>
+      <div class="funnel-step reveal">
+        <div class="funnel-num">06</div>
+        <div class="funnel-content">
+          <div><span class="funnel-tag vendas">Visita + Fechamento</span></div>
+          <h4>Visita presencial — quase sempre</h4>
+          <p>Processo interno da Kawamura — acompanhado por KPI, fora do escopo de gestão. 3–4 de cada 5 que conversam chegam à visita. 1 fecha.</p>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="highlight">
+        <p>A automação aqui <strong>não substitui o corretor</strong>. Ela garante que o lead chegue ao corretor certo, com as informações certas, no menor tempo possível. O atendimento humano — que é o diferencial da Kawamura — continua intacto.</p>
+      </div>
+      <div class="insight" style="margin-top:24px;">
+        <div class="insight-label">Sobre a IA que vocês testaram</div>
+        <p>5 meses de automação que não funcionou. O problema não era a automação — era o posicionamento dela. <strong>Para imóvel de R$ 300k+, o comprador quer falar com um especialista, não com um bot.</strong> Nossa automação entra antes do corretor, não no lugar dele.</p>
+      </div>
+      <div class="insight" style="margin-top:16px;">
+        <div class="insight-label">Sobre o HubSpot</div>
+        <p>Histórico de anos preservado. A decisão de integrar ou migrar será tomada com dados reais — <strong>após os primeiros 30 dias</strong>, com base no que o funil mostrar.</p>
+      </div>
+      <div class="insight" style="margin-top:16px;">
+        <div class="insight-label">Sobre o modelo de comissão</div>
+        <p>Rafael já alinhou internamente: <strong>os corretores aceitaram ceder 1% da comissão deles</strong> para financiar o marketing. Não há atrito interno — todos os decisores já compraram a ideia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cronograma">
+  <div class="section-label">04 — Cronograma</div>
+  <h2 class="section-title">6 meses.<br><em>Dois ciclos.</em> Um método.</h2>
+
+  <div class="crono-wrap">
+    <div class="crono-grid">
+      <div class="crono-header fase1">MÊS 1</div>
+      <div class="crono-header fase1">MÊS 2</div>
+      <div class="crono-header fase1">MÊS 3</div>
+      <div class="crono-header fase2">MÊS 4</div>
+      <div class="crono-header fase2">MÊS 5</div>
+      <div class="crono-header fase2">MÊS 6</div>
+      <div class="crono-body fase1">Configuração e go-live</div>
+      <div class="crono-body fase1">Calibração do funil</div>
+      <div class="crono-body fase1">Otimização e primeiros resultados</div>
+      <div class="crono-body fase2">Validação + início Funil 2</div>
+      <div class="crono-body fase2">Crescimento paralelo</div>
+      <div class="crono-body fase2">Expansão plena</div>
+      <div class="crono-span fase1"><span class="crono-dot fase1"></span>FUNIL 1 — 10 casas R$ 300k | Leme | Meta + Google</div>
+      <div class="crono-span fase2"><span class="crono-dot fase2"></span>FUNIL 1 (escala) + FUNIL 2 (produto a definir no mês 3)</div>
+    </div>
+  </div>
+
+  <div class="three-col" style="margin-top:48px;">
+    <div>
+      <h3 style="font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--green);margin-bottom:16px;">Mês 1</h3>
+      <p style="font-size:14px;color:var(--text-mid);line-height:1.65;">Landing page no ar. Campanhas configuradas no Meta e Google. Formulário MQL ativo. CRM integrado. Primeiros leads chegando ao time de vendas.</p>
+    </div>
+    <div>
+      <h3 style="font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--green);margin-bottom:16px;">Meses 2–3</h3>
+      <p style="font-size:14px;color:var(--text-mid);line-height:1.65;">Calibração com dados reais. CPL estabilizando. Taxa de qualificação mapeada. Primeiras visitas presenciais agendadas. Funil validado ao final do mês 3.</p>
+    </div>
+    <div>
+      <h3 style="font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--green-dark);margin-bottom:16px;">Meses 4–6</h3>
+      <p style="font-size:14px;color:var(--text-mid);line-height:1.65;">Funil 1 em escala. Construção do Funil 2 com base nos dados — lotes, construção ou alto padrão, definido junto com Rafael e Luciano. Expansão geográfica se indicada pelos números.</p>
+    </div>
+  </div>
+
+  <div class="highlight" style="margin-top:48px;">
+    <p><strong>Por que 6 meses?</strong> Tráfego pago para imóvel tem maturação real. Mês 1 calibra, mês 2 tem dados suficientes para otimizar, do mês 3 em diante o CPL cai e a máquina trabalha. Contratos de 1 mês pagam só pela fase mais cara — e saem antes de ver resultado.</p>
+  </div>
+
+  <div class="insight" style="margin-top:24px;">
+    <div class="insight-label">Expansão geográfica — critério claro</div>
+    <p>Iniciamos somente em Leme. <strong>Ao estabilizar o CPL e confirmar os primeiros agendamentos</strong>, abrimos gradualmente para Pirassununga e Guarararas — exatamente como Rafael apontou na reunião de diagnóstico.</p>
+  </div>
+</section>
+
+<section id="projecao">
+  <div class="section-label">05 — Projeção</div>
+  <h2 class="section-title">Três cenários.<br>Nenhum <em>achismo</em>.</h2>
+
+  <p style="font-size:15px;color:var(--text-mid);max-width:600px;margin-bottom:40px;line-height:1.7;">Baseado em benchmarks de imóveis residenciais R$ 250k–350k no interior paulista via Meta + Google. Não são garantias — são parâmetros para medir performance e tomar decisões.</p>
+
+  <div class="cenario-wrap">
+    <div class="cenario-grid">
+      <div class="cen-header">Métrica</div>
+      <div class="cen-col-header conservador">Conservador</div>
+      <div class="cen-col-header realista">Realista</div>
+      <div class="cen-col-header otimista">Otimista</div>
+
+      <div class="cen-label">Investimento em mídia</div>
+      <div class="cen-val">R$ 3.000/mês</div>
+      <div class="cen-val">R$ 3.000/mês</div>
+      <div class="cen-val">R$ 5.000/mês</div>
+
+      <div class="cen-label">Meta / Google</div>
+      <div class="cen-val">R$ 2k / R$ 1k</div>
+      <div class="cen-val">R$ 2k / R$ 1k</div>
+      <div class="cen-val">R$ 3k / R$ 2k</div>
+
+      <div class="cen-label">Leads gerados (LP)</div>
+      <div class="cen-val">50</div>
+      <div class="cen-val">80</div>
+      <div class="cen-val">140</div>
+
+      <div class="cen-label">MQLs qualificados</div>
+      <div class="cen-val">15</div>
+      <div class="cen-val">30</div>
+      <div class="cen-val">55</div>
+
+      <div class="cen-label">Custo por MQL</div>
+      <div class="cen-val">R$ 200</div>
+      <div class="cen-val highlight-val">R$ 100</div>
+      <div class="cen-val highlight-val">R$ 91</div>
+
+      <div class="cen-label">Visitas presenciais</div>
+      <div class="cen-val">3</div>
+      <div class="cen-val">9</div>
+      <div class="cen-val">19</div>
+
+      <div class="cen-label">Fechamentos estimados</div>
+      <div class="cen-val">0–1</div>
+      <div class="cen-val highlight-val">1</div>
+      <div class="cen-val highlight-val">2</div>
+
+      <div class="cen-label">Receita gerada</div>
+      <div class="cen-val">até R$ 300k</div>
+      <div class="cen-val highlight-val">R$ 300k</div>
+      <div class="cen-val highlight-val">R$ 600k</div>
+
+      <div class="cen-label">Comissão Bê-a-Bá (1%)</div>
+      <div class="cen-val">até R$ 3.000</div>
+      <div class="cen-val highlight-val">R$ 3.000</div>
+      <div class="cen-val highlight-val">R$ 6.000</div>
+    </div>
+  </div>
+
+  <div class="insight" style="margin-top:32px;">
+    <div class="insight-label">Como interpretar</div>
+    <p>Nos primeiros 30 dias, o objetivo é <strong>chegar ao CPL do cenário realista</strong> e validar a taxa de qualificação do formulário. Fechamento na Fase 1 é consequência, não meta — o objetivo é construir um funil com dados reais para escalar com previsibilidade.</p>
+  </div>
+</section>
+
+<section id="alinhamento" style="background:#eef5f1;padding:100px 80px;">
+  <div class="section-label">06 — Alinhamento</div>
+  <h2 class="section-title">Antes de falar<br>em investimento, <em>vamos confirmar</em></h2>
+  <p style="font-size:16px;color:var(--text-mid);max-width:560px;line-height:1.7;margin-bottom:8px;">Quero garantir que tudo que foi apresentado faz sentido para o momento da Kawamura — antes de qualquer número entrar na conversa.</p>
+
+  <div class="perguntas">
+    <div class="pergunta">
+      <div class="pergunta-num">01</div>
+      <p>A lógica de começar pelas 10 casas de R$ 300k — um funil validado antes de atacar os outros produtos — faz sentido para o momento da Kawamura?</p>
+    </div>
+    <div class="pergunta">
+      <div class="pergunta-num">02</div>
+      <p>O funil com formulário MQL e pré-qualificação automática — que entrega o lead ao corretor já perfilado, sem substituir o atendimento humano — resolve a preocupação de vocês com qualidade do lead depois das experiências anteriores?</p>
+    </div>
+    <div class="pergunta">
+      <div class="pergunta-num">03</div>
+      <p>O modelo de fee fixo + 1% de comissão por venda — onde só ganhamos mais quando vocês vendem mais, sem nenhum incentivo para inflar investimento em mídia — é o tipo de parceria que faz sentido para a Kawamura?</p>
+    </div>
+    <div class="pergunta" style="border-left-color:var(--gold);background:rgba(201,168,76,0.04);">
+      <div class="pergunta-num" style="color:var(--gold);">Pergunta final</div>
+      <p>Com tudo que foi apresentado — diagnóstico, estratégia, funil e cronograma — vocês sentem que essa é a estrutura certa para esse momento da Kawamura?</p>
+    </div>
+  </div>
+</section>
+
+<section id="investimento-section" style="padding:100px 80px;background:#0c1f0e !important;">
+  <div class="section-label">07 — Investimento</div>
+  <h2 class="section-title" style="color:#fff !important;">Projeto de 6 meses.<br><em style="color:var(--green);">Fee + comissão.</em></h2>
+
+  <div class="incluso-box">
+    <span class="incluso-label">Incluso no fee de gestão</span>
+    <p>Landing page de captação · Formulário MQL + pré-qualificação automática · Gestão Meta Ads + Google Ads · 5 criativos estáticos/mês · CRM e alerta ao corretor · Relatório semanal · Reunião mensal de revisão estratégica com Rafael e Luciano Toledo.</p>
+  </div>
+
+  <div class="invest-grid-cal">
+    <div class="invest-box-cal">
+      <span class="invest-box-label-cal">Valor total do projeto · 6 meses</span>
+      <div class="invest-total-cal"><sup>R$</sup> 18.000</div>
+      <div class="invest-total-sub-cal">Fee de gestão · 6 meses · Fase 1 + Fase 2</div>
+      <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,0.06);">
+        <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--green);margin-bottom:.8rem;">Comissão por venda fechada</div>
+        <div style="font-size:15px;color:rgba(255,255,255,0.65);line-height:1.6;">1% do VGV — pago após o contrato assinado com o cliente.<br><small style="opacity:.5;font-size:12px;">Exemplo: R$ 3.000 por casa de R$ 300k vendida via lead gerado pela campanha.</small></div>
+      </div>
+    </div>
+    <div class="invest-box-cal">
+      <span class="invest-box-label-cal">Formas de pagamento — fee de gestão</span>
+      <div class="pag-opts-cal">
+        <div class="pag-opt-cal">
+          <span class="pag-opt-label-cal">PIX ou Boleto</span>
+          <div class="pag-opt-desc-cal">R$ 5.000 de entrada<br>+ 5× de R$ 2.600 mensais</div>
+        </div>
+        <div class="pag-opt-cal">
+          <span class="pag-opt-label-cal">Cartão de Crédito</span>
+          <div class="pag-opt-desc-cal">R$ 5.000 de entrada<br>+ R$ 13.000 parcelado em até 12×<small>+ taxas da plataforma de pagamento · link InfinitePay</small></div>
+        </div>
+      </div>
+      <div class="pag-nota-cal">
+        <p>O investimento em mídia (mínimo R$ 3.000/mês) é pago diretamente pela Kawamura ao Meta e ao Google — não está incluído neste valor.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <div class="footer-logo"><img src="logo_nome_do_lado.png" alt="Bê-a-Bá Mídia"></div>
+    <div style="margin-top:12px;font-size:13px;color:rgba(255,255,255,0.4);max-width:320px;line-height:1.6;">Marketing de resultado para negócios de alto ticket. Macaé, RJ.</div>
+  </div>
+  <div class="footer-contact">
+    <a href="tel:+5522992159713">(22) 99215-9713</a>
+    <a href="/cdn-cgi/l/email-protection#e380828796a381868281828e8a878a82cd808c8ecd8191"><span class="__cf_email__" data-cfemail="6a090b0e1f2a080f0b080b07030e030b44090507440818">[email&#160;protected]</span></a>
+    <a href="https://beabamidia.com.br" target="_blank">beabamidia.com.br</a>
+  </div>
+  <div class="footer-copy">© 2026 Bê-a-Bá Mídia · Documento confidencial preparado exclusivamente para Kawamura Construções</div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 80);
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+reveals.forEach(r => observer.observe(r));
+
+// Active nav
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('nav ul a');
+window.addEventListener('scroll', () => {
+  le
