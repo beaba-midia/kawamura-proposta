@@ -634,7 +634,35 @@
   }
   .insight p { font-size: 14px; color: var(--text-mid); line-height: 1.65; }
   .insight strong { color: var(--text-main); }
-
+/* ALINHAMENTO */
+.perguntas { display: flex; flex-direction: column; gap: 16px; margin-top: 40px; max-width: 760px; }
+.pergunta {
+  background: #ffffff;
+  border: 1px solid rgba(0,168,81,0.18);
+  border-left: 4px solid #00a851;
+  border-radius: 0 12px 12px 0;
+  padding: 24px 28px;
+  transition: all .2s;
+}
+.pergunta:hover {
+  border-left-color: #02632b;
+  box-shadow: 0 4px 20px rgba(0,168,81,0.08);
+  transform: translateX(4px);
+}
+.pergunta p {
+  font-size: 16px;
+  color: #1a2b1c;
+  line-height: 1.65;
+  margin: 0;
+}
+.pergunta-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  color: #00a851;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
 
 
   .nav-burger {
